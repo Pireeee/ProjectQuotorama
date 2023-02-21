@@ -122,21 +122,16 @@ export default {
 </script>
 <template>
     <div>
-        <h1>Choose your API</h1>
+        <h2>Choose your API</h2>
         <label v-for="api in ApiList" :key="api.name">
         <input type="checkbox" v-model="checkedApi" :value="api" checked="true">
         {{ api.name }}
+        <br/>
         </label>
     </div>
     <div>  
-        <br/>
-        <button @click="changeApi">Change API</button>
-        <h3>curent API :</h3>
-        <div v-for="api in checkedApi">
-            <p style="font-size: 12px;"> {{ api.name }}</p>
-        </div>
-        
         <button @click="requestApi">Get a quote</button>
+        <br/>        
         <div class="post-it">
             <h2 id="quote">{{ displayedQuote }}</h2>
             <p id="author">{{ dispayedAuthor }}</p>
@@ -144,35 +139,51 @@ export default {
     </div>
 </template>
 <style>
-h2 {
-  font-weight: bold;
-  font-size: 2rem;
+button{
+    background:linear-gradient(45deg,var(--color-two),var(--color-one),var(--color-three),var(--color-four)); /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    width: 30em;
 }
-@font-face {
-    font-family: 'University';
-    src: url(../assets/University.otf);
-}
-p {
-  font-family: 'University';
-  font-size: 2rem;
-  left: 0;
+button:hover{
+    background:linear-gradient(45deg,var(--color-one),var(--color-two),var(--color-three),var(--color-four)); /* Green */
+    color: white;
 }
 .post-it{
-  text-decoration:none;
-  color:#000;
-  background:#ffc;
-  display:block;
-  height:auto;
-  width:40em;
-  padding:1em;
-  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-  transform: rotate(-1deg);
-  transition: transform .15s linear;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration:none;
+    color:#000;
+    background:var(--color-one);
+    display:block;
+    height:auto;
+    width:40em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    transform: rotate(-1deg);
+    transition: transform .15s linear;
 }
 .post-it:hover, .post-it:focus{
   box-shadow:8px 8px 7px rgba(0,0,0,.7);
   transform: scale(1.01) rotate(-1deg);
   position:relative;
   z-index:5;
+}
+.post-it p{
+    font-size:1.5rem;
+    font-style:italic;
+    margin:0;
+    padding:0;
 }
 </style>
