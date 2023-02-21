@@ -1,0 +1,19 @@
+https://github.com/RocktimSaikia/anime-chan
+https://favqs.com/api //quote of the day.
+https://forismatic.com/en/api/ //idk
+https://api.goprogram.ai/inspiration/docs/
+https://kanye.rest/
+https://kimiquotes.herokuapp.com/doc
+https://github.com/skolakoda/programming-quotes-api
+https://github.com/lukePeavey/quotable
+https://pprathameshmore.github.io/QuoteGarden/
+https://www.jcquotes.com/G74fd
+https://quotesondesign.com/api/
+https://github.com/tlcheah2/stoic-quote-lambda-public-api
+https://theysaidso.com/api/
+https://github.com/shevabam/breaking-bad-quotes
+https://gameofthronesquotes.xyz/
+https://github.com/shadowoff09/lucifer-quotes
+https://nodejs-quoteapp.herokuapp.com/
+https://github.com/jamesseanwright/ron-swanson-quotes#ron-swanson-quotes-api
+https://github.com/yogeshwaran01/web-series-quotes
