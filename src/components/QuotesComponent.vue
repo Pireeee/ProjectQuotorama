@@ -153,7 +153,7 @@ h2 {
     src: url(../assets/University.otf);
 }
 p {
-  font-family: 'University','Reenie Beanie';
+  font-family: 'University';
   font-size: 2rem;
   left: 0;
 }
