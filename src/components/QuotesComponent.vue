@@ -1,7 +1,9 @@
-<script lang="ts">
+<script>
 export default {
     data() {
         return {
+            checkedApi: [],
+            ApiList:[],//liste des apis utilisées
             displayedQuote: '',
             dispayedAuthor: '',
             otherDisplay: '',
@@ -49,7 +51,19 @@ export default {
             },
         }
     },
+    mounted() {
+        this.initApiList()
+        this.api = this.apiAnime
+    },
     methods: {
+        //initialise la liste des apis utilisées
+        initApiList(){
+            this.ApiList.push(this.apiAnime)
+            this.ApiList.push(this.apiGoProgram)
+            this.ApiList.push(this.apikanye)
+            this.ApiList.push(this.apitrump)
+        },  
+
         //change l'api utilisée
         changeApi(){
             if(this.api.name == this.apiAnime.name){
@@ -65,8 +79,15 @@ export default {
             }
         },
 
+        getRandomApi(){
+            let random = Math.floor(Math.random() * this.checkedApi.length)
+            return this.checkedApi[random]
+        },
+
         //fais une requête à l'api pour récupérer les citations
         requestApi(){
+        this.api= this.getRandomApi();
+        console.log(this.api);
         fetch(this.api.url)
             .then(response => response.json())
             .then(json => {
@@ -101,8 +122,20 @@ export default {
 </script>
 <template>
     <div>
+        <h1>Choose your API</h1>
+        <label v-for="api in ApiList" :key="api.name">
+        <input type="checkbox" v-model="checkedApi" :value="api" checked="true">
+        {{ api.name }}
+        </label>
+    </div>
+    <div>  
+        <br/>
         <button @click="changeApi">Change API</button>
-        <p>curent API : {{ api.name }}</p>
+        <h3>curent API :</h3>
+        <div v-for="api in checkedApi">
+            <p style="font-size: 12px;"> {{ api.name }}</p>
+        </div>
+        
         <button @click="requestApi">Get a quote</button>
         <div class="post-it">
             <h2 id="quote">{{ displayedQuote }}</h2>
@@ -115,8 +148,12 @@ h2 {
   font-weight: bold;
   font-size: 2rem;
 }
+@font-face {
+    font-family: 'University';
+    src: url(../assets/University.otf);
+}
 p {
-  font-family: 'Reenie Beanie';
+  font-family: 'University','Reenie Beanie';
   font-size: 2rem;
   left: 0;
 }

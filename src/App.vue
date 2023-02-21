@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import QuotesComponent from './components/QuotesComponent.vue';
 
 export default {
@@ -14,11 +14,6 @@ export default {
     }
   },
   methods: {
-    
-    //fonction qui va récupérer la valeur de l'input
-    test(e:string) {
-      this.textWritten = e;
-    }
   },
 }
 
@@ -28,9 +23,6 @@ export default {
   <div class="app">
     <h1>{{ title }}</h1>
     <br/>
-    <input v-model="text">
-    <button @click="test(text)">test</button>
-    <p>Voici ce que tu as écrit : {{ textWritten }}</p>
     <QuotesComponent/>
 
   </div>
