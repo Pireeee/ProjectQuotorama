@@ -9,10 +9,7 @@ export default {
   },
   data(){
     return {
-      text: 'rien',
-      textWritten: 'rien',
-      title: 'Bienvenu sur Quotorama !',
-      
+      title: 'Wellcome to Quotorama !',
     }
   },
   methods: {
