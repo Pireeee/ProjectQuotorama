@@ -1,32 +1,26 @@
 <script>
-import QuotesComponent from './components/QuotesComponent.vue';
-import HeaderComponent from './components/HeaderComponent.vue';
+import HeaderComponent from "./components/HeaderComponent.vue";
 
 export default {
   components: {
-    QuotesComponent,
-    HeaderComponent
+    HeaderComponent,
   },
-  data(){
+  data() {
     return {
-      title: 'Wellcome to Quotorama !',
-    }
+      title: "Wellcome to Quotorama !",
+    };
   },
-  methods: {
-  },
-}
-
+  methods: {},
+};
 </script>
 
 <template>
-  <HeaderComponent/>
+  <HeaderComponent />
+  <h1>{{ title }}</h1>
+  <br />
   <div class="app">
-    <h1>{{ title }}</h1>
-    <br/>
-    <QuotesComponent/>
-
+    <RouterView />
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
