@@ -1,10 +1,17 @@
 <script></script>
 <template>
   <header>
-    <div id="title">
-      <RouterLink to="/">
-        <h1>Quotorama</h1>
-      </RouterLink>
+    <div>
+      <div class="logo">
+        <RouterLink to="/">
+          <img src="../assets/logo.png" alt="logo" />
+        </RouterLink>
+      </div>
+      <div id="title">
+        <RouterLink to="/">
+          <h1>Quotorama</h1>
+        </RouterLink>
+      </div>
     </div>
   </header>
 </template>
@@ -20,5 +27,14 @@ header {
 a {
   color: #fff;
   text-decoration: none;
+}
+img{
+  width: 100px;
+  height: 100px;
+}
+header div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

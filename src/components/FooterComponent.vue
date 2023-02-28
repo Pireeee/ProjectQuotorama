@@ -16,4 +16,8 @@ footer {
   text-align: center;
   border-top: 1px solid #ccc;
 }
+a {
+  color: #fff;
+  text-decoration: none;
+}
 </style>

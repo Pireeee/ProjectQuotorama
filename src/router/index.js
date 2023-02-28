@@ -12,8 +12,8 @@ const router = createRouter({
     },
 
     {
-      path: "/easter",
-      name: "Easter",
+      path: "/cgu",
+      name: "CGU",
       component: CGU,
     },
   ],
