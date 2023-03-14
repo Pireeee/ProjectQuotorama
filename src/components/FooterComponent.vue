@@ -12,9 +12,12 @@
 <style>
 footer {
   background: linear-gradient(to right, #f12711, #f5af19);
-  padding: 1rem;
   text-align: center;
   border-top: 1px solid #ccc;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
 }
 a {
   color: #fff;

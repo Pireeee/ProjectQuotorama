@@ -82,6 +82,20 @@ export default {
           },
         },
       },
+      apiGeekJokes: {
+        name: "Geek Jokes",
+        url: "https://geek-jokes.sameerkumar.website/api?format=json",
+        json: {
+          joke: "",
+        },
+      },
+      apiDogFacts: {
+        name: "Dog Facts",
+        url: "https://dog-api.kinduff.com/api/facts",
+        json: {
+          facts: [],
+        },
+      },
     };
   },
   mounted() {
@@ -99,17 +113,19 @@ export default {
       this.ApiList.push(this.apiChuckNorris);
       this.ApiList.push(this.apiStoicism);
       this.ApiList.push(this.apiGameOfThrones);
+      this.ApiList.push(this.apiGeekJokes);
+      this.ApiList.push(this.apiDogFacts);
     },
 
     getRandomApi() {
       let random = Math.floor(Math.random() * this.checkedApi.length);
       return this.checkedApi[random];
     },
-    changePostItColor(){
+    changePostItColor() {
       let random = Math.floor(Math.random() * 4);
       if (random === 0) {
         this.postItColor = "var(--color-one)";
-      } else if(random === 1){
+      } else if (random === 1) {
         this.postItColor = "var(--color-two)";
       } else if (random === 2) {
         this.postItColor = "var(--color-three)";
@@ -118,12 +134,8 @@ export default {
       }
     },
 
-
     //fais une requête à l'api pour récupérer les citations
     requestApi() {
-
-      //fais apparaitre le loader
-      this.isLoading = true;
       this.api = this.getRandomApi();
       console.log(this.api);
       fetch(this.api.url)
@@ -166,6 +178,12 @@ export default {
             (this.displayedAuthor = json.character.name),
               (this.displayedQuote = json.sentence),
               (this.otherDisplay = "");
+          } else if (this.api.name === this.apiGeekJokes.name) {
+            (this.displayedQuote = json.joke),
+              (this.displayedAuthor = "Geek Jokes");
+          } else if (this.api.name === this.apiDogFacts.name){
+            (this.displayedQuote = json.facts[0]),
+              (this.displayedAuthor = "Dog Facts");
           } else {
             console.log("error no api");
           }
@@ -194,7 +212,7 @@ export default {
       <div>
         <button @click="requestApi" class="button-55">Get a quote</button>
       </div>
-      <div class="post-it" :style="{backgroundColor:postItColor}">
+      <div class="post-it" :style="{ backgroundColor: postItColor }">
         <h2 id="quote">{{ displayedQuote }}</h2>
         <p id="author" class="auth">{{ displayedAuthor }}</p>
         <p id="other" class="other">{{ otherDisplay }}</p>

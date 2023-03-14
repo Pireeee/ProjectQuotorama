@@ -12,7 +12,7 @@ export default {
     <router-link to="/">
       <button class="button-55">Back to home</button>
     </router-link>
-    <img class="cat" src="http://placekitten.com/700/500" alt="Cat"/>
+    <img class="cat" src="http://placekitten.com/700/500" alt="Cat" />
   </div>
 </template>
 <style>
