@@ -2,34 +2,31 @@
 export default {
   name: "EasterComponent",
   data() {
-    return {
-      duck: "",
-    };
+    return {};
   },
-  mounted() {
-    this.getDuck();
-  },
-  methods: {
-    //get a random duck image from the api
-    getDuck() {
-      console.log("getDuck()");
-      fetch("https://random-d.uk/api/v2/quack")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data.url);
-          this.duck = data.url;
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 <template>
-  <div>
-    <button @click="getDuck()">Get a random duck</button>
-    <img :src="duck" alt="duck" />
+  <div class="cgu">
     <router-link to="/">
       <button class="button-55">Back to home</button>
     </router-link>
+    <img class="cat" src="http://placekitten.com/700/500" alt="Cat"/>
   </div>
 </template>
-<style></style>
+<style>
+.cgu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.cat {
+  width: 80%;
+  height: 80%;
+  display: block;
+  margin: 1em;
+}
+</style>

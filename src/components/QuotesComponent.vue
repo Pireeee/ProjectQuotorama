@@ -8,6 +8,7 @@ export default {
       displayedAuthor: "",
       otherDisplay: "",
       isLoading: true,
+      postItColor: "var(--color-one)",
       //api utilisée
       api: {
         name: "none",
@@ -84,7 +85,7 @@ export default {
     };
   },
   mounted() {
-    this.isLoading= false;
+    this.isLoading = false;
     this.initApiList();
   },
   methods: {
@@ -104,9 +105,23 @@ export default {
       let random = Math.floor(Math.random() * this.checkedApi.length);
       return this.checkedApi[random];
     },
+    changePostItColor(){
+      let random = Math.floor(Math.random() * 4);
+      if (random === 0) {
+        this.postItColor = "var(--color-one)";
+      } else if(random === 1){
+        this.postItColor = "var(--color-two)";
+      } else if (random === 2) {
+        this.postItColor = "var(--color-three)";
+      } else if (random === 3) {
+        this.postItColor = "var(--color-four)";
+      }
+    },
+
 
     //fais une requête à l'api pour récupérer les citations
     requestApi() {
+
       //fais apparaitre le loader
       this.isLoading = true;
       this.api = this.getRandomApi();
@@ -155,38 +170,39 @@ export default {
             console.log("error no api");
           }
         });
-      //fait disparaitre le loader
-      this.isLoading= false;
+      this.changePostItColor();
     },
   },
 };
 </script>
 <template>
-  <div class="source">
-    <h2>Choose your Source</h2>
-    <label v-for="api in ApiList" :key="api.name">
-      <input
-        type="checkbox"
-        v-model="checkedApi"
-        :value="api"
-        checked="checked"
-      />
-      {{ api.name }}
-      <br />
-    </label>
-  </div>
-  <div class="quote">
-    <div>
-      <button @click="requestApi" class="button-55">Get a quote</button>
+  <div class="quoteComponent">
+    <div class="source">
+      <h2>Choose your Source</h2>
+      <label v-for="api in ApiList" :key="api.name">
+        <input
+          type="checkbox"
+          v-model="checkedApi"
+          :value="api"
+          checked="checked"
+        />
+        {{ api.name }}
+        <br />
+      </label>
     </div>
-    <div class="post-it">
-      <h2 id="quote">{{ displayedQuote }}</h2>
-      <p id="author" class="auth">{{ displayedAuthor }}</p>
-      <p id="other" class="other">{{ otherDisplay }}</p>
+    <div class="quote">
+      <div>
+        <button @click="requestApi" class="button-55">Get a quote</button>
+      </div>
+      <div class="post-it" :style="{backgroundColor:postItColor}">
+        <h2 id="quote">{{ displayedQuote }}</h2>
+        <p id="author" class="auth">{{ displayedAuthor }}</p>
+        <p id="other" class="other">{{ otherDisplay }}</p>
+      </div>
     </div>
+    <br />
+    <br />
   </div>
-  <br />
-  <br />
 </template>
 <style>
 .post-it {
@@ -197,7 +213,6 @@ export default {
     "Lucida Sans Unicode", Geneva, "Verdana", sans-serif;
   text-decoration: none;
   color: #000;
-  background: var(--color-one);
   height: auto;
   width: 30em;
   min-height: 25em;

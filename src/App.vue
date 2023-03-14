@@ -19,7 +19,7 @@ export default {
 <template>
   <HeaderComponent />
   <h1>{{ title }}</h1>
-  <p> Choose your Source and get quotes form it !</p>
+  <p>Choose your Source and get quotes form it !</p>
   <div class="app">
     <RouterView />
   </div>

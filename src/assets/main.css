@@ -1,8 +1,8 @@
 :root{
     --color-one: #ffc;
-    --color-two: #f0f;
-    --color-three: #cfc;
-    --color-four: #ccf;
+    --color-two: #ED5B9A;
+    --color-three: #9DC9F0;
+    --color-four: #EBE354;
 }
 body{
     text-align: center;
@@ -13,7 +13,7 @@ body{
     margin: 0;
     padding: 0;
 }
-.app {
+.quoteComponent {
     justify-content: center;
     text-align: center;
     background-color: #f5f5f5;
