@@ -187,8 +187,8 @@ export default {
           } else {
             console.log("error no api");
           }
+          this.changePostItColor();
         });
-      this.changePostItColor();
     },
   },
 };
