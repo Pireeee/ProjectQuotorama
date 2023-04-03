@@ -96,6 +96,14 @@ export default {
           facts: [],
         },
       },
+      apiDummyJson: {
+        name: "DummyJson",
+        url: "https://dummyjson.com/quotes/",
+        json: {
+          quotes: "",
+          author: "",
+        },
+      },
     };
   },
   mounted() {
@@ -103,6 +111,9 @@ export default {
     this.initApiList();
   },
   methods: {
+    randomDummy() {
+      return Math.floor(Math.random() * 99)+1;
+    },
     //initialise la liste des apis utilisées
     initApiList() {
       this.ApiList.push(this.apiAnime);
@@ -115,6 +126,7 @@ export default {
       this.ApiList.push(this.apiGameOfThrones);
       this.ApiList.push(this.apiGeekJokes);
       this.ApiList.push(this.apiDogFacts);
+      this.ApiList.push(this.apiDummyJson);
     },
 
     getRandomApi() {
@@ -138,6 +150,9 @@ export default {
     requestApi() {
       this.api = this.getRandomApi();
       console.log(this.api);
+      if(this.api.name === "DummyJson"){
+        this.api.url = "https://dummyjson.com/quotes/" + this.randomDummy();
+      }
       fetch(this.api.url)
         .then((response) => response.json())
         .then((json) => {
@@ -180,10 +195,16 @@ export default {
               (this.otherDisplay = "");
           } else if (this.api.name === this.apiGeekJokes.name) {
             (this.displayedQuote = json.joke),
-              (this.displayedAuthor = "Geek Jokes");
-          } else if (this.api.name === this.apiDogFacts.name){
+              (this.displayedAuthor = "Geek Jokes"),
+              (this.otherDisplay = "");
+          } else if (this.api.name === this.apiDogFacts.name) {
             (this.displayedQuote = json.facts[0]),
-              (this.displayedAuthor = "Dog Facts");
+              (this.displayedAuthor = "Dog Facts"),
+              (this.otherDisplay = "");
+          } else if (this.api.name === this.apiDummyJson.name) {
+            (this.displayedAuthor = json.author),
+              (this.displayedQuote = json.quote),
+              (this.otherDisplay = "");
           } else {
             console.log("error no api");
           }
