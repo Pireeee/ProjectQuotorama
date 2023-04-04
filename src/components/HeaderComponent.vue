@@ -28,11 +28,11 @@ a {
   color: #fff;
   text-decoration: none;
 }
-img{
+img {
   width: 100px;
   height: 100px;
 }
-header div{
+header div {
   display: flex;
   justify-content: space-between;
   align-items: center;

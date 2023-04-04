@@ -74,6 +74,15 @@ body{
 .button-55:focus {
     box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
 }
+.button-55[disabled] {
+    background-color: #f5f5f5;
+    border-color: #f5f5f5;
+    box-shadow: none;
+    color: #ccc;
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+}
 @font-face {
   font-family: 'University';
   src: url(../assets/University.otf);

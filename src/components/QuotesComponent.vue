@@ -1,132 +1,126 @@
+<!--suppress ALL -->
 <script>
 export default {
   data() {
     return {
-      checkedApi: [],
-      ApiList: [], //liste des apis utilisées
-      displayedQuote: "",
-      displayedAuthor: "",
-      otherDisplay: "",
-      isLoading: true,
-      postItColor: "var(--color-one)",
-      //api utilisée
+      checkedApi: [], //Api selectionnées
+      displayedQuote: "", //citation affichée
+      displayedAuthor: "", //auteur de la citation affichée
+      otherDisplay: "", //autre affichage
+      postItColor: "var(--color-one)", //couleur du post-it
+      //api par défaut
       api: {
         name: "none",
         url: "",
         json: {},
       },
-      //api animechan
-      apiAnime: {
-        name: "Anime Chan",
-        url: "https://animechan.vercel.app/api/random",
-        json: {
-          anime: "",
-          character: "",
-          quote: "",
-        },
-      },
-      //api GoProgram
-      apiGoProgram: {
-        name: "Go Program (one per day)",
-        url: "https://api.goprogram.ai/inspiration",
-        json: {
-          quote: "",
-          author: "",
-        },
-      },
-      //api Kanye
-      apiKanye: {
-        name: "Kanye West",
-        url: "https://api.kanye.rest/",
-        json: {
-          quote: "",
-        },
-      },
-      //api trump
-      apiTrump: {
-        name: "Donald Trump",
-        url: "https://api.whatdoestrumpthink.com/api/v1/quotes/random",
-        json: {
-          quote: "",
-        },
-      },
-      apiJamesClear: {
-        name: "James Clear",
-        url: "https://www.jcquotes.com/api/quotes/random",
-        json: {
-          text: "",
-        },
-      },
-      apiChuckNorris: {
-        name: "Chuck Norris (jokes)",
-        url: "https://api.chucknorris.io/jokes/random",
-        json: {
-          value: "",
-        },
-      },
-      apiStoicism: {
-        name: "Stoicism",
-        url: "https://api.themotivate365.com/stoic-quote",
-        json: {
-          quote: "",
-          author: "",
-        },
-      },
-      apiGameOfThrones: {
-        name: "Game of Thrones",
-        url: "https://api.gameofthronesquotes.xyz/v1/random",
-        json: {
-          sentence: "",
-          character: {
-            name: "",
+      //Ici, je définis les formats des Apis que je vais utiliser
+      apiList: [
+        //api Anime Chan
+        {
+          name: "Anime Chan",
+          url: "https://animechan.vercel.app/api/random",
+          json: {
+            anime: "",
+            character: "",
+            quote: "",
           },
         },
-      },
-      apiGeekJokes: {
-        name: "Geek Jokes",
-        url: "https://geek-jokes.sameerkumar.website/api?format=json",
-        json: {
-          joke: "",
+        //api GoProgram
+        {
+          name: "Go Program (one per day)",
+          url: "https://api.goprogram.ai/inspiration",
+          json: {
+            quote: "",
+            author: "",
+          },
         },
-      },
-      apiDogFacts: {
-        name: "Dog Facts",
-        url: "https://dog-api.kinduff.com/api/facts",
-        json: {
-          facts: [],
+        //api Kanye West
+        {
+          name: "Kanye West",
+          url: "https://api.kanye.rest/",
+          json: {
+            quote: "",
+          },
         },
-      },
-      apiDummyJson: {
-        name: "DummyJson",
-        url: "https://dummyjson.com/quotes/",
-        json: {
-          quotes: "",
-          author: "",
+        //api trump
+        {
+          name: "Donald Trump",
+          url: "https://api.whatdoestrumpthink.com/api/v1/quotes/random",
+          json: {
+            quote: "",
+          },
         },
-      },
+        //api James Clear
+        {
+          name: "James Clear",
+          url: "https://www.jcquotes.com/api/quotes/random",
+          json: {
+            text: "",
+          },
+        },
+        //api Chuck Norris
+        {
+          name: "Chuck Norris (jokes)",
+          url: "https://api.chucknorris.io/jokes/random",
+          json: {
+            value: "",
+          },
+        },
+        //api Stoicism
+        {
+          name: "Stoicism",
+          url: "https://api.themotivate365.com/stoic-quote",
+          json: {
+            quote: "",
+            author: "",
+          },
+        },
+        //api GameOfThrones
+        {
+          name: "Game of Thrones",
+          url: "https://api.gameofthronesquotes.xyz/v1/random",
+          json: {
+            sentence: "",
+            character: {
+              name: "",
+            },
+          },
+        },
+        //api GeekJokes
+        {
+          name: "Geek Jokes",
+          url: "https://geek-jokes.sameerkumar.website/api?format=json",
+          json: {
+            joke: "",
+          },
+        },
+        //api DogFacts
+        {
+          name: "Dog Facts",
+          url: "https://dog-api.kinduff.com/api/facts",
+          json: {
+            facts: [],
+          },
+        },
+        //api DummyJson
+        {
+          name: "DummyJson",
+          url: "https://dummyjson.com/quotes/",
+          json: {
+            quotes: "",
+            author: "",
+          },
+        },
+      ],
     };
   },
   mounted() {
-    this.isLoading = false;
-    this.initApiList();
+    console.log(this.apiList);
   },
   methods: {
     randomDummy() {
-      return Math.floor(Math.random() * 99)+1;
-    },
-    //initialise la liste des apis utilisées
-    initApiList() {
-      this.ApiList.push(this.apiAnime);
-      this.ApiList.push(this.apiGoProgram);
-      this.ApiList.push(this.apiKanye);
-      this.ApiList.push(this.apiTrump);
-      this.ApiList.push(this.apiJamesClear);
-      this.ApiList.push(this.apiChuckNorris);
-      this.ApiList.push(this.apiStoicism);
-      this.ApiList.push(this.apiGameOfThrones);
-      this.ApiList.push(this.apiGeekJokes);
-      this.ApiList.push(this.apiDogFacts);
-      this.ApiList.push(this.apiDummyJson);
+      return Math.floor(Math.random() * 99) + 1;
     },
 
     getRandomApi() {
@@ -150,58 +144,66 @@ export default {
     requestApi() {
       this.api = this.getRandomApi();
       console.log(this.api);
-      if(this.api.name === "DummyJson"){
+      if (this.api.name === "DummyJson") {
         this.api.url = "https://dummyjson.com/quotes/" + this.randomDummy();
       }
       fetch(this.api.url)
         .then((response) => response.json())
         .then((json) => {
           console.log(json);
-          //si l'api est Animechan, on récupère les données dans les clés anime, character et quote
-          if (this.api.name === this.apiAnime.name) {
+          //On teste toutes les Api, et on récupère les données dans les clés correspondantes, car chaque api donne les données dans des clés différentes
+          if (this.api.name === this.apiList[0].name) {
+            //AnimeChan
             (this.displayedAuthor = json.character),
               (this.displayedQuote = json.quote),
               (this.otherDisplay = json.anime);
-          } else if (this.api.name === this.apiGoProgram.name) {
-            //sinon, on récupère les données dans les clés author et quote
+          } else if (this.api.name === this.apiList[1].name) {
+            //GoProgram
             (this.displayedAuthor = json.author),
               (this.displayedQuote = json.quote),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiKanye.name) {
-            //sinon, on récupère les données dans la clé quote
+          } else if (this.api.name === this.apiList[2].name) {
+            //Kanye West
             (this.displayedAuthor = "Kanye West"),
               (this.displayedQuote = json.quote),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiTrump.name) {
-            //sinon, on récupère les données dans la clé message
+          } else if (this.api.name === this.apiList[3].name) {
+            //Donald Trump
             (this.displayedAuthor = "Donald Trump"),
               (this.displayedQuote = json.message),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiJamesClear.name) {
+          } else if (this.api.name === this.apiList[4].name) {
+            //James Clear
             (this.displayedAuthor = "James Clear"),
               (this.displayedQuote = json.text),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiChuckNorris.name) {
+          } else if (this.api.name === this.apiList[5].name) {
+            //Chuck Norris
             (this.displayedAuthor = "Chuck Norris"),
               (this.displayedQuote = json.value),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiStoicism.name) {
+          } else if (this.api.name === this.apiList[6].name) {
+            //Stoicism
             (this.displayedAuthor = json.author),
               (this.displayedQuote = json.quote),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiGameOfThrones.name) {
+          } else if (this.api.name === this.apiList[7].name) {
+            //Game of Thrones
             (this.displayedAuthor = json.character.name),
               (this.displayedQuote = json.sentence),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiGeekJokes.name) {
+          } else if (this.api.name === this.apiList[8].name) {
+            //Geek Jokes
             (this.displayedQuote = json.joke),
               (this.displayedAuthor = "Geek Jokes"),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiDogFacts.name) {
+          } else if (this.api.name === this.apiList[9].name) {
+            //Dog Facts
             (this.displayedQuote = json.facts[0]),
               (this.displayedAuthor = "Dog Facts"),
               (this.otherDisplay = "");
-          } else if (this.api.name === this.apiDummyJson.name) {
+          } else if (this.api.name === this.apiList[10].name) {
+            //DummyJson
             (this.displayedAuthor = json.author),
               (this.displayedQuote = json.quote),
               (this.otherDisplay = "");
@@ -218,7 +220,7 @@ export default {
   <div class="quoteComponent">
     <div class="source">
       <h2>Choose your Source</h2>
-      <label v-for="api in ApiList" :key="api.name">
+      <label v-for="api in apiList" :key="api.name">
         <input
           type="checkbox"
           v-model="checkedApi"
@@ -231,7 +233,13 @@ export default {
     </div>
     <div class="quote">
       <div>
-        <button @click="requestApi" class="button-55">Get a quote</button>
+        <button
+          @click="requestApi"
+          :disabled="checkedApi.length === 0"
+          class="button-55"
+        >
+          Get a quote
+        </button>
       </div>
       <div class="post-it" :style="{ backgroundColor: postItColor }">
         <h2 id="quote">{{ displayedQuote }}</h2>
