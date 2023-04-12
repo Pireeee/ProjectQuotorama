@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "EasterComponent",
+  name: "CGUComponent",
   data() {
     return {};
   },
@@ -13,6 +13,7 @@ export default {
       <button class="button-55">Back to home</button>
     </router-link>
     <img class="cat" src="http://placekitten.com/700/500" alt="Cat" />
+    <!-- Conditions générales d'utilisation de mon site -->
   </div>
 </template>
 <style>

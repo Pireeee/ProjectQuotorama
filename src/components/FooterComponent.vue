@@ -11,6 +11,7 @@
 </template>
 <style>
 footer {
+  /* CSS pour le footer */
   background: linear-gradient(to right, #f12711, #f5af19);
   text-align: center;
   border-top: 1px solid #ccc;

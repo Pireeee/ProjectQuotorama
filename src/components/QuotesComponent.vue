@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <script>
 export default {
   data() {
@@ -115,18 +114,18 @@ export default {
       ],
     };
   },
-  mounted() {
-    console.log(this.apiList);
-  },
   methods: {
+    //récupère une citation pour L'api DummyJson qui récupère une liste de citations et non une seule.
     randomDummy() {
       return Math.floor(Math.random() * 99) + 1;
     },
-
+    //récupère une citation
     getRandomApi() {
       let random = Math.floor(Math.random() * this.checkedApi.length);
       return this.checkedApi[random];
     },
+
+    //change la couleur du post-it
     changePostItColor() {
       let random = Math.floor(Math.random() * 4);
       if (random === 0) {
@@ -252,6 +251,7 @@ export default {
   </div>
 </template>
 <style>
+/* CSS  pour la div Post-it */
 .post-it {
   display: inline-block;
   justify-content: center;
