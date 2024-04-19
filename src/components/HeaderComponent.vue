@@ -1,4 +1,6 @@
-<script></script>
+<script>
+import { RouterLink } from 'vue-router';
+</script>
 <template>
   <header>
     <div>
@@ -6,6 +8,12 @@
         <RouterLink to="/">
           <img src="../assets/logo.png" alt="logo" />
         </RouterLink>
+      </div>
+      <div id="nav">
+        <RouterLink to="/login">Login</RouterLink>
+      </div>
+      <div id="nav">
+        <RouterLink to="/register">Register</RouterLink>
       </div>
       <div id="title">
         <RouterLink to="/">

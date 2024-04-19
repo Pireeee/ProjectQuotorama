@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Quotes from "../components/QuotesComponent.vue";
 import CGU from "../components/CGUComponent.vue";
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -18,6 +19,19 @@ const router = createRouter({
       name: "CGU",
       component: CGU,
     },
+
+    {
+      // login route
+      path: "/login",
+      name: "Login",
+      component: () => import("../components/LoginComponent.vue"),
+    },
+    {
+      // register route
+      path: "/register",
+      name: "Register",
+      component: () => import("../components/RegisterComponent.vue"),
+    }
   ],
 });
 
