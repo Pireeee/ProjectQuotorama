@@ -15,6 +15,9 @@ import { RouterLink } from 'vue-router';
       <div id="nav">
         <RouterLink to="/register">Register</RouterLink>
       </div>
+      <div id="nav">
+        <RouterLink to="/admin">Admin</RouterLink>
+      </div>
       <div id="title">
         <RouterLink to="/">
           <h1>Quotorama</h1>

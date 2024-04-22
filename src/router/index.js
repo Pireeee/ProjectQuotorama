@@ -19,6 +19,12 @@ const router = createRouter({
       name: "CGU",
       component: CGU,
     },
+    {
+      // admin route
+      path: "/admin",
+      name: "Admin",
+      component: () => import("../components/AdminComponent.vue"),
+    },
 
     {
       // login route
