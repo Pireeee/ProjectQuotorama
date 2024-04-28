@@ -23,21 +23,9 @@ const router = createRouter({
       // admin route
       path: "/admin",
       name: "Admin",
+      params: { admin: true },
       component: () => import("../components/AdminComponent.vue"),
     },
-
-    {
-      // login route
-      path: "/login",
-      name: "Login",
-      component: () => import("../components/LoginComponent.vue"),
-    },
-    {
-      // register route
-      path: "/register",
-      name: "Register",
-      component: () => import("../components/RegisterComponent.vue"),
-    }
   ],
 });
 

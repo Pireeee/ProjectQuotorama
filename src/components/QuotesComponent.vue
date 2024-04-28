@@ -14,107 +14,31 @@ export default {
         json: {},
       },
       //Ici, je définis les formats des Apis que je vais utiliser
-      apiList: [
-        //api Anime Chan
-        {
-          name: "Anime Chan",
-          url: "https://animechan.vercel.app/api/random",
-          json: {
-            anime: "",
-            character: "",
-            quote: "",
-          },
-        },
-        //api GoProgram
-        {
-          name: "Go Program (one per day)",
-          url: "https://api.goprogram.ai/inspiration",
-          json: {
-            quote: "",
-            author: "",
-          },
-        },
-        //api Kanye West
-        {
-          name: "Kanye West",
-          url: "https://api.kanye.rest/",
-          json: {
-            quote: "",
-          },
-        },
-        //api trump
-        {
-          name: "Donald Trump",
-          url: "https://api.whatdoestrumpthink.com/api/v1/quotes/random",
-          json: {
-            quote: "",
-          },
-        },
-        //api James Clear
-        {
-          name: "James Clear",
-          url: "https://www.jcquotes.com/api/quotes/random",
-          json: {
-            text: "",
-          },
-        },
-        //api Chuck Norris
-        {
-          name: "Chuck Norris (jokes)",
-          url: "https://api.chucknorris.io/jokes/random",
-          json: {
-            value: "",
-          },
-        },
-        //api Stoicism
-        {
-          name: "Stoicism",
-          url: "https://api.themotivate365.com/stoic-quote",
-          json: {
-            quote: "",
-            author: "",
-          },
-        },
-        //api GameOfThrones
-        {
-          name: "Game of Thrones",
-          url: "https://api.gameofthronesquotes.xyz/v1/random",
-          json: {
-            sentence: "",
-            character: {
-              name: "",
-            },
-          },
-        },
-        //api GeekJokes
-        {
-          name: "Geek Jokes",
-          url: "https://geek-jokes.sameerkumar.website/api?format=json",
-          json: {
-            joke: "",
-          },
-        },
-        //api DogFacts
-        {
-          name: "Dog Facts",
-          url: "https://dog-api.kinduff.com/api/facts",
-          json: {
-            facts: [],
-          },
-        },
-        //api DummyJson
-        {
-          name: "DummyJson",
-          url: "https://dummyjson.com/quotes/",
-          json: {
-            quotes: "",
-            author: "",
-          },
-        },
-      ],
+      apiList: [],
     };
   },
   methods: {
+
+    getAllApis()  {
+      fetch("http://localhost:8080/apis/getAllApis", {
+        mode: 'cors'
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.apiList = data;  // Make sure to assign to apis.value
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        apis.value = [];  // Reset apis or set a default state
+      });
+    },  
+
     //récupère une citation pour L'api DummyJson qui récupère une liste de citations et non une seule.
     randomDummy() {
       return Math.floor(Math.random() * 99) + 1;
@@ -213,6 +137,9 @@ export default {
         });
     },
   },
+  mounted(){
+    this.getAllApis();
+  }
 };
 </script>
 <template>
